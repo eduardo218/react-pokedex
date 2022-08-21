@@ -4,6 +4,7 @@
     
     .detailed-card-bg img {
         width: 80%;
+        height: 80%;
     }
 
     .detailed-card-title{
@@ -17,5 +18,19 @@
 
     .detailed-card-stat {
         font-size: 1.5rem;
+    }
+
+    .detailed-card-button{
+        margin-top: 50px;
+        padding: 15px 25px;
+        font-size: 30px;
+        border-radius: 10px;
+        background: linear-gradient(rgb(204, 0, 0), rgb(255, 59, 59));
+        color: #FFF;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(rgb(255, 59, 59), rgb(204, 0, 0));
+        }
     }
 }

@@ -1,17 +1,16 @@
 import './detailed-card.styles.scss'
 
 import React, { useEffect, useState } from 'react'
-import { searchPokemon } from '../../api/api'
+import { getRandomPokemon } from '../../api/api'
 
-const DetailedCard = ({name}) => {
+const DetailedCard = () => {
     const [pokemonData, setPokemonData] = useState({})
 
-    useEffect(() => {
-        const getPokemon = async () => {
-        const result = await searchPokemon(name)
+    const handleRandomize = async () => {
+        const result = await getRandomPokemon()
         
         const pokemonInfo = {
-            name: result.name,
+            name: result.name.toUpperCase(),
             id: result.id,
             image: result.sprites.other.dream_world.front_default,
             type: result.types[0].type.name,
@@ -27,7 +26,8 @@ const DetailedCard = ({name}) => {
         setPokemonData(pokemonInfo)
         }
 
-        getPokemon()
+    useEffect(() => {
+        handleRandomize()
     }, [])
 
   return (
@@ -46,6 +46,7 @@ const DetailedCard = ({name}) => {
             <h3 className='detailed-card-stat'>Special-attack: {`${pokemonData.spAttack}`}</h3>
             <h3 className='detailed-card-stat'>Special-Defense: {`${pokemonData.spDefense}`}</h3>
             <h3 className='detailed-card-stat'>Speed: {`${pokemonData.speed}`}</h3>
+            <button className='detailed-card-button' onClick={handleRandomize}>Another one, please!</button>
         </div>
     </div>
   )
