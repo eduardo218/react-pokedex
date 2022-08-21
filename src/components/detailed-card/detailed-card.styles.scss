@@ -1,0 +1,21 @@
+.detailed-card-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    .detailed-card-bg img {
+        width: 80%;
+    }
+
+    .detailed-card-title{
+        font-size: 5rem;
+    }
+
+    .detailed-card-type {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .detailed-card-stat {
+        font-size: 1.5rem;
+    }
+}

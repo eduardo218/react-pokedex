@@ -1,0 +1,39 @@
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(rgb(204, 0, 0), rgb(255, 59, 59));
+    height: 60px;
+    padding: 0 30px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    .logo {
+        .nav-link{
+            text-decoration: none;
+        }
+        h1 {
+            color: #FFF;
+        }
+        span {
+            color: yellow;
+        }
+    }
+
+    .nav-menu ul {
+        display: flex;
+        list-style: none;
+
+        li .nav-link{
+            text-decoration: none;
+            color: #FFF;
+            margin-left: 15px;
+
+            &:hover{
+                color: #000;
+            }
+        }
+    }
+}

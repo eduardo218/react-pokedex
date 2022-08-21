@@ -1,0 +1,28 @@
+.sidebar-container {
+    background: linear-gradient(rgb(204, 0, 0), rgb(255, 59, 59));
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    
+    .sidebar-list {
+        display: flex;
+        list-style-type: none;
+
+        .sidebar-button {
+        border: none;
+        background-color: transparent;
+        padding: 10px;
+        color: #FFF;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: yellow;
+            color: #000;
+        }
+        }
+    }
+}
