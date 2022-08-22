@@ -7,7 +7,7 @@ const DetailedCard = () => {
     const [pokemonData, setPokemonData] = useState({})
 
     const handleRandomize = async () => {
-        const result = await getRandomPokemon()
+        const result = await getRandomPokemon(599)
         
         const pokemonInfo = {
             name: result.name.toUpperCase(),

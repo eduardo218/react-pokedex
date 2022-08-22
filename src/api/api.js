@@ -1,5 +1,4 @@
 const BASE_URL = 'https://pokeapi.co/api/v2'
-const IMAGE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'
 
 export const POKEMON_TYPES = {
     all: 'All',
@@ -32,7 +31,7 @@ export const searchPokemon = async (pokemon) => {
     }
 }
 
-export const getPokemons = async (limit=20, offset=0) => {
+export const getPokemons = async (limit=25, offset=0) => {
     try{
         const response = await fetch(`${BASE_URL}/pokemon?limit=${limit}&offset=${offset}`)
         const result = await response.json()

@@ -1,6 +1,8 @@
 .home-card-list{
     max-width: 1440px;
-    margin: 160px auto;
+    margin-top: 160px;
+    margin-bottom: 30px;
+    margin-inline: auto;
     padding: 0 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -17,4 +19,24 @@
     @media (max-width: 680px) {
         grid-template-columns: 1fr;     
     }
+}
+
+.show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    & button{
+        padding: 15px 25px;
+        font-size: 30px;
+        border-radius: 10px;
+        background: linear-gradient(rgb(204, 0, 0), rgb(255, 59, 59));
+        color: #FFF;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(rgb(255, 59, 59), rgb(204, 0, 0));
+        }
+    }
+    
 }
