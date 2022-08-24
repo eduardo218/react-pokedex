@@ -1,25 +1,31 @@
 import './sidebar.styles.scss'
 
-import {getPokemons, getPokemonsByType, POKEMON_TYPES} from '../../api/api'
+import {getPokemons, getPokemonsByType, POKEMON_TYPES, searchPokemon} from '../../api/api'
 import { useContext, useEffect, useState } from 'react'
 import { PokemonsContext } from '../../contexts/pokemons.context'
 
 const Sidebar = () => {
     const [types, setTypes] = useState([])
-    const {setPokemons} = useContext(PokemonsContext)
+    const {setPokemons, count, typesMenu, setTypesMenu} = useContext(PokemonsContext)
+
 
     const handleTypeFilter = async (type) => {
+        setPokemons([])
+        setTypesMenu(false)
         if(type === 'all'){
-            const result = await getPokemons()
-            setPokemons(result.results) 
-            return
+            const data = await getPokemons(count)
+           setPokemons(data)
+            
         }  else{
-            const result = await getPokemonsByType(type)
-            let arr = []
-            for (let i in result.pokemon){
-                arr.push(result.pokemon[i].pokemon)
+            const data = await getPokemonsByType(type)
+
+            const loadPokemonInfo = (result) => {
+                result.forEach(async pokemon => {
+                    const allPokemonInfo = await searchPokemon(pokemon.pokemon.name)
+                    setPokemons(current => [...current, allPokemonInfo])
+                }) 
             }
-            setPokemons(arr)   
+            loadPokemonInfo(data.pokemon) 
         }
     }
 
@@ -31,7 +37,7 @@ const Sidebar = () => {
         setTypes(arr)
     }, [])
   return (
-    <aside className='sidebar-container'>
+    <aside className={`sidebar-container ${typesMenu ? 'show' : 'hide'}`}>
         <ul className='sidebar-list'>
             {
                 types.map((type, index) => {

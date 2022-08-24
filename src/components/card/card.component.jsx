@@ -1,15 +1,17 @@
-import { useContext, useEffect, useState } from 'react'
-import { searchPokemon} from '../../api/api'
-import { PokemonsContext } from '../../contexts/pokemons.context'
 import './card.styles.scss'
 
-const Card = ({name}) => {
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { searchPokemon } from '../../api/api'
+
+
+const Card = ({pokemon}) => {
+
   const [pokemonData, setPokemonData] = useState({})
-  const {pokemons} = useContext(PokemonsContext)
 
   useEffect(() => {
     const getPokemon = async () => {
-      const result = await searchPokemon(name)
+      const result = await searchPokemon(pokemon.name)
       
       const pokemonInfo = {
         name: result.name,
@@ -21,17 +23,25 @@ const Card = ({name}) => {
     }
 
     getPokemon()
-  }, [pokemons])
+  }, [])
+
+  const navigate = useNavigate()
+
+  const { id, name, image, type} = pokemonData
+
+  const handleNavigate = () => {
+    navigate(`/details/${name}`)
+  }
 
   return (
-    <div className='card-container'>
+    <div className='card-container' onClick={handleNavigate}>
         <div className="card-number">
-            <span>#{pokemonData.id}</span>
+            <span>#{id}</span>
         </div>
-        <img src={pokemonData.image} alt={pokemonData.name} className='card-image'/>
+        <img src={image} alt={name} className='card-image'/>
         <div className="card-footer">
-            <h3 className='card-name'>{name.toUpperCase()}</h3>
-            <h4>Type: {pokemonData.type}</h4>
+            <h3 className='card-name'>{name}</h3>
+            <h4>Type: {type}</h4>
         </div>
 
     </div>

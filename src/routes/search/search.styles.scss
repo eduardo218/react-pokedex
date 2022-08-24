@@ -1,5 +1,39 @@
 .search-container {
     margin-top: 90px;
     margin-inline: auto;
-    max-width: 1440px;
+    max-width: 1440px;    
+
+    .search-box{
+
+        &.show {
+            display: flex;
+            justify-content: center;
+        }
+
+        &.hide {
+            display: none;
+        }        
+
+        input {
+            line-height: 32px;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 28px;
+        }
+
+        button {
+            margin-left: 10px;
+            border-radius: 10px;
+            height: 100%;
+            font-size: 28px;
+            padding: 5px;
+            background: linear-gradient(rgb(204, 0, 0), rgb(255, 59, 59));
+            color: #FFF;
+            cursor: pointer;
+
+            &:hover {
+                background: linear-gradient(rgb(255, 59, 59), rgb(204, 0, 0));
+            }
+        }
+    }
 }

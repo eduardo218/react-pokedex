@@ -1,5 +1,6 @@
 const BASE_URL = 'https://pokeapi.co/api/v2'
 
+
 export const POKEMON_TYPES = {
     all: 'All',
     normal: 'Normal',
@@ -27,16 +28,16 @@ export const searchPokemon = async (pokemon) => {
         const response = await fetch(`${BASE_URL}/pokemon/${pokemon}`)
         return await response.json()
     }catch(error){
-        console.log(`Error in searchPokemon: ${error}`)
+        return 'pokemon not found'
     }
 }
 
-export const getPokemons = async (limit=25, offset=0) => {
+export const getPokemons = async (limit = 25) => {
     try{
-        const response = await fetch(`${BASE_URL}/pokemon?limit=${limit}&offset=${offset}`)
-        const result = await response.json()
-    
-        return result
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`)
+        const result = await response.json()             
+
+        return result.results
     }catch(error){
         console.log(`Error in getPokemons: ${error}`)
     }
